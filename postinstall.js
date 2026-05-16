@@ -81,7 +81,7 @@ if (
       console.error(
         `Download failed: ${err}, will build from source`
       );
-      const out = cp.spawnSync('npm', ['run', 'build-release'], {
+      const out = cp.spawnSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build-release'], {
         cwd: __dirname,
         stdio: ['ignore', 'inherit', 'inherit']
       });
